@@ -1,0 +1,21 @@
+<h1>Bulk import employees</h1>
+
+<%= simple_form_for [:create, @_employer, @emp], :url => company_create_employer_employee_path do |f| %>
+	
+	<%= field_set_tag do %>
+		<div class="input file">
+			<label style="font-size: 14px; display: block; padding-bottom: 10px;">Employee database</label>
+			<input type="file" />
+		</div>
+		<%= f.input :name, :as => :hidden %>
+		<%= f.input :nominated_charity, :as => :hidden %>
+		<%= f.input :deduction, :as => :hidden %>
+		<%= f.input :ni, :as => :hidden %>
+		<%= f.input :approved, :label => "Automatically approve new employees?" %>
+	<% end %>
+		
+	<%= field_set_tag nil, :class => "actions" do %>
+		<%= f.submit :value => "Import" %>	
+	<% end %>
+	
+<% end %>

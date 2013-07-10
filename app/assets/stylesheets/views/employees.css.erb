@@ -1,0 +1,127 @@
+form.slides fieldset {
+	background: #f7f6f1;
+	min-height: 250px;
+	padding: 20px;
+	text-align: center;
+	width: 880px;
+	position: relative;
+	padding-bottom: 60px;
+}
+
+form.slides fieldset h2 {
+	padding-top: 30px;
+	padding-bottom: 15px;
+}
+
+form.slides fieldset p {
+	font-size: 13px;
+	margin-bottom: 0.6em;
+	font-style: italic;
+	margin-top: -10px;
+}
+
+ul.big_radio {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.big_radio li {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 10px;
+	height: 90px;
+	width: 90px;
+	background: #ffffff;
+	color: #c23a1a;
+/* 	line-height: 90px; */
+	border-radius: 120px;
+	padding: 0;
+	cursor: pointer;
+}
+
+ul.big_radio.large li {
+/* 	line-height: 90px; */
+	border-radius: 20px;
+	height: 65px;
+	padding-top: 25px;
+	width: 180px;
+}
+
+ul.big_radio.large {
+	margin-bottom: 40px;
+}
+
+form.slides label {
+	text-align: center;
+}
+
+form.slides div.input {
+	margin-bottom: 30px;
+}
+
+form.slides div.input input.string,
+form.slides div.input input.password {
+	border-color: #ccc;
+	width: 200px;
+}
+
+form.slides p.cta { margin: 0; /* position: absolute; bottom: 20px; left: 45%; */ }
+form.slides p.cta a.alt-action {
+	background: none;
+	box-shadow: none;
+	display: block;
+}
+
+ul.big_radio li.active,
+ul.big_radio li:hover {
+	background: #c23a1a;
+	color: #fff;
+}
+
+form.slides .inline_form { font-style: italic; padding-top: 40px; }
+form.slides .inline_form label { display: none; }
+form.slides .inline_form .input { display: inline-block; }
+form.slides .inline_form .input input {  display: inline-block; width: 20px !important; padding-top: 2px; padding-bottom: 2px; margin: 0 5px 0 3px; }
+
+
+#pagination {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	height: 0px;
+}
+
+#pagination li {
+	padding: 0;
+	margin: 0;
+}
+
+#pagination .page_links {
+	display: none;
+}
+
+#pagination .prev,
+#pagination .next {
+	text-indent: -1337px;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: top left;
+	position: absolute;
+	bottom: 20px;
+	height: 42px;
+	width: 42px;
+	cursor: pointer;
+	top: 53%;
+	display: none !important;
+}
+
+#pagination .prev {
+	background-image: url(<%= asset_path "icons/previous.png" %>);
+	left: 10px;
+}
+
+#pagination .next {
+	background-image: url(<%= asset_path "icons/next.png" %>);
+	right: 10px;
+}

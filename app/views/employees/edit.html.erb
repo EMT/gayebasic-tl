@@ -1,0 +1,16 @@
+<h1>Change your monthly giving</h1>
+
+<%= simple_form_for [:update, @_employer, @_employee] do |f| %>
+	
+	<%= field_set_tag do %>
+		<%= f.input :deduction %>
+		<%= f.input :nominated_charity %>
+	<% end %>
+		
+	<p><em>Any changes will be reflected in from your next month's payment</em>.</p>
+
+	<%= field_set_tag nil, :class => "actions" do %>
+		<%= f.submit :value => "Save" %>	
+	<% end %>
+	
+<% end %>

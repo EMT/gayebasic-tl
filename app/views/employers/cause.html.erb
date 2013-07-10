@@ -1,0 +1,33 @@
+<h1>Your Give as you Earn Scheme</h1>
+
+<%= simple_form_for [:update, @_employer], :url => company_update_path do |f| %>
+	
+	<%= field_set_tag do %>
+		<%= f.input :cause_ids, :as => :check_boxes, :collection => Cause.all, :label => "Promoted causes" %>
+		<%= f.input :nominated_charity, :label => "Promoted charity" %>
+	<% end %>
+	
+	<%= field_set_tag do %>
+		<h2>Match donations</h2>
+			
+		<%= f.input :matching, :label => "Match employees donations pound for pound?" %>
+		
+		<p style="margin-top: -25px"><a href="" class="advanced_toggle">&hellip; or set up advanced matching</a></p>
+		
+		<div id="advanced" style="display: none">
+			
+			<ul>
+			<li>For every <input type="text" class="input text" / > donated we will add <input type="text" class="input text" / > up to <input type="text" class="input text" / > per <select><option>month</option><option>year</option></select></li> 
+			<li>Match charities supporting <select><option>all causes</option><%= Cause.all.each do |c| %><option><%= c.name.downcase %></option><% end %></select></li>
+			<li>Match only <input type="text" class="input text" / > charity</li>
+			</ul>
+				
+		</div>
+		
+	<% end %>
+		
+	<%= field_set_tag nil, :class => "actions" do %>
+		<%= f.submit :value => "Save" %>	
+	<% end %>
+	
+<% end %>

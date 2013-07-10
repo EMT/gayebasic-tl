@@ -1,0 +1,121 @@
+<h1>Donate to <%= @_cause.name %> Through Your Salary</h1>
+
+<%= simple_form_for @new_employee, :html => { :class => "" } do |f| %>
+	
+	<%= field_set_tag nil, { :class => 'visual-section', :id => 'step-1' } do %>
+		
+		<h2>Your Employer</h2>
+		
+ 		<div class="input string optional">
+			<label for="employer_employer_id">Start typing the name of your employer, then select from the list</label>
+			<%= select :employee, :employer_id, @employers.collect{|e| [e.name, e.id]}, {:include_blank => ''}, {:class => 'flexselect'} %>
+		</div>
+		
+		<p>Can’t see your employer here? <a href="" class="alert" data-alert="Take user to somewhere to get their employer involved.">Click here instead</a></p>
+		
+	<% end %>
+	
+	
+	<%= field_set_tag nil, { :class => 'visual-section', :id => 'step-2', :style => 'display: none;' } do %>
+		
+		<h2>Your Donation</h2>
+		
+		<h3>Type</h3>
+		<div class="input boolean">
+			<input name="type" type="radio"/><label>New regular donation</label>
+			<input name="type" type="radio"/><label>Increase an existing regular donation</label>
+			<input name="type" type="radio"/><label>One-off donation</label>
+		</div>
+		
+		<%= f.input :deduction, :label => "How much?" %>
+		
+		<h3>How Often?</h3>
+		<p>Let us know how often you are paid: your donation will be taken each pay day.</p>
+		<div class="input boolean">
+			<input name="how_often" type="radio"/><label>Monthly</label>
+			<input name="how_often" type="radio"/><label>4 weekly</label>
+			<input name="how_often" type="radio"/><label>Fortnightly</label>
+			<input name="how_often" type="radio"/><label>Weekly</label>
+		</div>
+		
+		<div id="calculator" style="display: none;">
+			<h2><%= @_cause.name %> receives…</h2>
+			<p>Select your tax band to see how much <%= @_cause.name %> will receive each time you make a donation through your salary. <a href="#" class="tooltip" data-tooltip="We have calculated that the 40% higher rate tax band starts after earning £42,476 gross per year (including personal allowance of £8,105). The 50% super tax is applicable to those earning over £150,000 gross per year (this includes any and all personal allowances that may or may not be applicable).">Which tax band?</a></p>
+			<div class="input boolean">
+				<input name="tax" type="radio" value="20" checked="checked" /><label>20%</label>
+				<input name="tax" type="radio" value="40" /><label>40%</label>
+				<input name="tax" type="radio" value="45" /><label>45  %</label>
+			</div>
+			
+			<p class="headline-figure" id="calculated-donation"></p>
+		</div>
+		
+	<% end %>
+	
+	
+<!--
+	<%= field_set_tag nil, { :class => 'visual-section', :id => 'step-3', :style => 'display: none;' } do %>
+		
+		<h2>Tax Band</h2>
+		<p>Please select your tax band.</p>
+		<div class="input boolean">
+			<input name="tax" type="radio"/><label>20%</label>
+			<input name="tax" type="radio"/><label>40%</label>
+			<input name="tax" type="radio"/><label>50%</label>
+		</div>
+		<p>We have calculated that the 40% higher rate tax band starts after earning £42,476 gross per year (including personal allowance of £8,105). The 50% super tax is applicable to those earning over £150,000 gross per year (this includes any and all personal allowances that may or may not be applicable).</p>
+		
+	<% end %>
+-->
+	
+	
+	<%= field_set_tag nil, { :class => 'visual-section', :id => 'step-3', :style => 'display: none;' } do %>
+		
+		<h2>Personal Details</h2>
+		
+		<%= f.input :name, :label => "Your name" %>
+		
+		<%= f.input :email, :label => "Your email address" %>
+		<%= f.input :password, :label => "Choose a password" %>
+		
+		<%= f.input :number, :label => "Your National Insurance or employee number" %>
+		
+		<%#= f.input :postcode, :label => "Postcode" %>
+		
+		<div class="input string optional field_with_hint">
+			<label class="string optional" for="employer_colour_1">Home Address</label>
+			<textarea class="string optional" id="employee_address" maxlength="255" name="employee[address]" size="50" type="text" value=""></textarea>
+		</div>
+		
+		<%#= f.input :phone, :label => "Telephone number" %>
+		<%#= f.input :mobile, :label => "Mobile number" %>
+		
+<!--
+		<div class="input string optional field_with_hint">
+			<label class="string optional" for="employer_colour_1">Date of birth</label>
+			<input class="string optional" id="employer_colour_1" maxlength="255" name="employer[colour_1]" size="50" type="text" value="" />
+		</div>
+-->
+
+		<%#= f.input :dob, :label => "Date of birth" %>
+		
+		<%= f.input :opt_in, :label => "Would you like us to send you email updates about the impact your donation is having?" %>
+		
+<!--
+		<div class="input boolean">
+			<input name="c" type="checkbox"/><label>Would you like us to send you email updates about the impact your donation is having?</label>
+		</div>
+-->
+		
+	<% end %>
+	
+	
+	
+	<%= field_set_tag nil, { :class => 'visual-section', :id => 'step-4', :style => 'display: none;' } do %>
+	
+		<input name="commit" type="submit" value="Go" />
+	
+	<% end %>
+	
+	
+<% end %>

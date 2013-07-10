@@ -1,0 +1,17 @@
+<h1>Manage employee registration</h1>
+
+<%= simple_form_for [:update, @_employer, @emp], :url => company_update_employer_employee_path do |f| %>
+	
+	<%= field_set_tag do %>
+		<%= f.input :name %>
+		<%= f.input :email %>
+		<%= f.input :ni, :label => "National Insurance Number" %>
+		<%= f.input :address, :input_html => { :rows => 4 } %>
+		<%= f.input :approved, :label => "Approve employee registration" %>
+	<% end %>
+		
+	<%= field_set_tag nil, :class => "actions" do %>
+		<%= f.submit :value => "Save" %>	
+	<% end %>
+	
+<% end %>

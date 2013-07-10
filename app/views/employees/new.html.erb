@@ -1,0 +1,110 @@
+<h1>Start giving as you earn</h1>
+
+<%= simple_form_for @new_employee, :html => { :class => "slides" } do |f| %>
+	
+	<%= field_set_tag do %>
+		<h2>Find a charity to support</h2>
+		
+		<ul class="big_radio large">
+			<li class="jump_to_2">I know who I want to support</li>
+			<li class="jump_to_3">Help me find a charity</li>
+			<li class="jump_to_5">Support our charity of the year</li>
+		</ul>
+		
+		<!--
+<ul class="big_radio small">
+			<% @causes.each do |cause| %>
+			<li><%= cause.name %></li>
+			<% end %>
+		</ul>
+-->
+		
+<!-- 		<p class="cta jump_to_2"><%= link_to "Next" %></p> -->
+		
+	<% end %>
+	
+	
+	<%= field_set_tag do %>
+		<h2>Search for a charity</h2>
+		
+		<div class="input string optional">
+			<label for="nominated_charity_charity_id">Start typing the name of a charity</label>
+			<%= select :nominated_charity, :charity_id, @charities.collect{|c| [c.name, c.id]}, {:include_blank => ''}, {:class => 'flexselect'} %>
+		</div>
+		
+<!-- 		<%= f.input :nominated_charity, :label => "Or support a different charity" %> -->
+		
+		<p class="cta jump_to_5"><%= link_to "Next" %></p>
+		<p><%= link_to "Or go back a step", "", :class => "alt-action jump_to_1" %></p>
+		
+		
+	<% end %>
+	
+	
+	<%= field_set_tag do %>
+		<h2>Which cause would you like to support</h2>
+
+		<ul class="big_radio large">
+			<li>Youth</li>
+			<li>Poverty</li>
+			<li>Healthcare</li>
+		</ul>
+
+		<p class="cta jump_to_4"><%= link_to "Next" %></p>
+		<p><%= link_to "Or sign-up now and choose your charity later", "", :class => "alt-action jump_to_6" %></p>
+		<p><%= link_to "Or go back a step", "", :class => "alt-action jump_to_1" %></p>
+
+	<% end %>
+	
+	
+	<%= field_set_tag do %>
+		<h2>Suggested charities</h2>
+		<p>Based on your location and preferred cause we have found some charities you may like to support</p>
+		<ul class="big_radio large">
+			<li>NSPCC</li>
+			<li>Local Youth Hospice</li>
+		</ul>
+		
+		<p class="cta jump_to_5"><%= link_to "Next" %></p>
+		<p><%= link_to "Or search for a different charity", "", :class => "alt-action jump_to_2" %></p>
+		<p><%= link_to "Or sign-up now and choose your charity later", "", :class => "alt-action jump_to_6" %></p>
+		<p><%= link_to "Or go back a step", "", :class => "alt-action jump_to_3" %></p>
+		
+	<% end %>
+	
+	
+	
+	<%= field_set_tag do %>
+		<h2>Your donation</h2>
+		<div class="inline_form">If you donate &nbsp;&nbsp;&nbsp;£<%= f.input :deduction %> from your salary, with tax relief your charity will receive <strong data-tax="20">&pound;12.50</strong></div>
+	<!-- 		<p>If you pay the standard 20% tax rate, we’ll take: <strong data-tax="20">&pound;8</strong> from your salary</p> -->
+		<p>If you pay the higher 40% tax rate, your charity will receive: <strong data-tax="40">&pound;16.67</strong></p>
+		<p>If you pay the higher 45% tax rate, your charity will receive: <strong data-tax="45">&pound;18.18</strong></p>
+		<p class="cta jump_to_6"><%= link_to "Next" %></p>
+		<p><%= link_to "Or add another charity", "", :class => "alt-action jump_to_1" %></p>
+		<p><%= link_to "Or go back a step", "", :class => "alt-action jump_to_1" %></p>
+	<% end %>
+	
+	<%= field_set_tag do %>
+		<h2>About you</h2>
+		<%= f.input :name, :label => "Your name" %>
+		<%= f.input :number, :label => "Your National Insurance or employee number" %>
+		<%= f.input :email, :label => "Your email address" %>
+		<%= f.input :password, :label => "Choose a password" %>
+		<%= f.input :opt_in, :label => "I would like to hear from my chosen charity" %>
+		<%= f.hidden_field :employer_id, :value => @_employer.id %>
+		<p class="cta jump_to_7"><%= link_to "Finish" %></p>
+		<p><%= link_to "Or go back a step", "", :class => "alt-action jump_to_5" %></p>
+	<% end %>
+	
+	<%= field_set_tag do %>
+		<h2>That's it!</h2>
+<!--
+		<p>Your employer set up the rest, you'll receive an email with full details of your giving before your first donation.</p>
+		<%= f.submit :value => "View your giving profile" %>
+-->
+		<p>Thank you for signing up to our charity giving scheme. You will receive an email confirmation of your request shortly</p>
+	<% end %>
+	
+	
+<% end %>

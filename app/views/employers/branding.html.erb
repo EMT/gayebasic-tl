@@ -1,0 +1,15 @@
+<h1>Your GAYE Portal Branding</h1>
+
+<%= simple_form_for [:update, @_employer], :url => company_update_path do |f| %>
+	
+	<%= field_set_tag do %>
+		<%= f.input :logo, :as => :file %>
+		<%= f.input :colour_1, :label => "Primary colour", :hint => "For default orange branding use #c23a1a, try #0162ad for blue branding" %>
+		<%= f.input :colour_2, :label => "Secondary colour", :hint => "For default orange branding use #ea5528, try #4b82ad for blue branding" %>
+	<% end %>
+	
+	<%= field_set_tag nil, :class => "actions" do %>
+		<%= f.submit :value => "Save" %>	
+	<% end %>
+	
+<% end %>

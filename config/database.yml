@@ -1,0 +1,24 @@
+defaults: &defaults
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  host: 127.0.0.1
+  username: 
+  password: 
+
+development: &DEV
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: madebyrobots
+  socket: /tmp/mysql.sock
+  database: cafbasic_development
+
+test: &TEST
+  <<: *defaults
+  database: cafbasic_test
+
+production:
+  <<: *defaults
+  database: cafbasic_production

@@ -1,0 +1,24 @@
+<h1>Welcome back, <%= @_employee.name %></h1>
+
+<section class="panel full_panel">
+	<p class="intro">You are currently giving <strong>&pound;<%= @_employee.deduction %></strong> per month to <strong><%= @_employee.nominated_charity %></strong></p>
+	<p class="cta"><%= link_to "Change", employee_update_path(@_employer,@_employee) %></p>
+</section>
+
+<section class="panel">
+	<h2>Your giving</h2>
+	<ul>
+		<li>Total donated: &pound;1,029</li>
+		<li>Received by charities: &pound;2,030</li>
+		<li>Your CAF account balance: &pound;203</li>
+	</ul>
+	<p class="cta" style="float: left; margin-right: 10px"><%= link_to "View full giving history", employee_history_path(@_employer,@_employee) %></p>
+	<p class="cta" style="float: left;"><%= link_to "Donate from CAF account", employee_donate_path(@_employer,@_employee) %></p>
+	
+</section>
+
+<section class="panel">
+	<h2>From your charity</h2>
+	<p><em>"We work hard to make sure we achieve as much possible with the charity funds we receive. For instance, €49, can provide 15-day emergency food supplies to 10 families."</em></p>
+	<p class="cta"><%= link_to "Read the full report", "https://www.concern.net/en/about/how-money-spent" %></p>
+</section>

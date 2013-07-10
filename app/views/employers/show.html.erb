@@ -1,0 +1,43 @@
+<h1>Your Give As You Earn Scheme</h1>
+
+<% if @_employer.employees.unapproved.any? %>
+
+<section class="panel full_panel">
+	<h2>Notifications</h2>
+	<p style="font-size: 12px; margin-bottom: 0px"><em>You have <strong><%= @_employer.employees.unapproved.count %></strong> new Give as you Earn employee <%= pluralize(@_employer.employees.unapproved.count, "request") %></em></p>
+
+	<table style="margin-top: 20px; margin-bottom: 10px;">
+		<tbody>
+			<% @_employer.employees.unapproved.each do |e| %>
+			<tr>
+				<td><%= e.name %></td>
+				<td><%= "#{link_to("Approve", company_employees_edit_path(@_employer,e))}".html_safe %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	
+</section>
+<% end %>
+
+
+<section class="panel full_panel">
+	<p class="intro">Last month, <strong>102</strong> of your employees gave <strong>£10,039</strong> through Give as you Earn.</p>
+	<p class="cta"><%= link_to "Past reports", company_reports_path %></p>	
+	<p class="cta"><%= link_to "February report", company_report_path %></p>
+</section>
+
+<section class="panel">
+	<h2>Your scheme</h2>
+	<p>Your promoted charity is <strong><%= @_employer.nominated_charity %></strong><%= ", you're matching your employees donations pound for pound" if @_employer.matching? %>.</p>
+	<p class="cta" style="float: left; margin-right: 10px"><%= link_to "Amend your scheme", company_cause_path %></p>
+	<p class="cta" style="float: left;"><%= link_to "Customise branding", company_branding_path %></p>
+	
+</section>
+
+<section class="panel">
+	<h2>Employees</h2>
+	<p>You currently have 102 registered employees, and <%= @_employer.employees.unapproved.count %> unapproved employees.</p>
+	<p class="cta" style="float: left; margin-right: 10px"><%= link_to "Manage employees", company_employees_path %></p>
+	<p class="cta" style="float: left;"><%= link_to "Email employees", company_message_path %></p>
+</section>

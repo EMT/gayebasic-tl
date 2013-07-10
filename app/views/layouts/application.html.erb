@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Give As You Earn</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+<% if params[:company] %>
+	<style>
+	header.container { background: <%= @_employer.colour_1 %>; }
+	#primary_navigation { background: <%= @_employer.colour_2 %>; }
+
+	.cta a {
+		background: <%= @_employer.colour_2 %>;
+		border-bottom: 5px solid <%= @_employer.colour_1 %>;
+	}
+	.cta a.alt-action {
+		color: <%= @_employer.colour_1 %>;
+	}
+
+	input[type="submit"] {
+		background: <%= @_employer.colour_2 %>;
+		border-bottom: 5px solid <%= @_employer.colour_1 %>;
+	}
+
+	a { color: <%= @_employer.colour_2 %>; }
+	
+	ul.big_radio li { color: <%= @_employer.colour_1 %>; }
+
+	ul.big_radio li.active,
+	ul.big_radio li:hover {
+		background: <%= @_employer.colour_1 %>;
+	}
+
+	strong { color: <%= @_employer.colour_1 %>; }
+	time { color: <%= @_employer.colour_1 %>; }
+	table thead tr { color: <%= @_employer.colour_1 %>; }
+	</style>
+<% end %>
+
+</head>
+<body class="<%= "section_#{params[:controller].parameterize.underscore} view_#{params[:action]}"%>">
+
+	<header class="container">
+		<p id="product">
+			<% if params[:company] %>
+				<%= link_to @_employer.name, company_path(@_employer) %>
+				<span><%= link_to "Give As You Earn", company_path(@_employer) %></span>
+			<% else %>
+				<%= link_to "Give As You Earn", root_path %>
+			<% end %>
+		</p>
+		<p id="branding">Charities Aid Foundation</p>
+	</header>
+	
+	<nav id="primary_navigation" class="container">
+		<ul>
+			<% if params[:controller] == "employers" && params[:action] != "index" %>
+				<li><%= link_to "Company dashboard", company_dashboard_path(@_employer) %></li>
+			<% else %>
+				<% if employee_signed_in? %>
+					<li>&nbsp;<!-- <%= link_to "Manage your giving", employee_path(@_employer, @_employee) %> --></li>
+				<% else %>
+					<li>&nbsp;<!-- <%= link_to "Manage your giving", new_employee_session_path %> --></li>
+				<% end %>
+			<% end %>
+		</ul>
+	</nav>
+
+	<section id="primary_content" class="container">
+	
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+	
+		<%= yield %>
+		
+	</section>
+
+	<footer class="container">
+		<nav id="colophon">
+			<ul>
+				<li>Copyright &copy; Charities Aid Foundation 2013</li>
+				<li><%= link_to "Privacy policy "%></li>
+				<li><%= link_to "Terms and conditions "%></li>
+				<% if employee_signed_in? %>
+					<li><%= link_to "Log out ", destroy_employee_session_path, :method => :delete %></li>
+				<% end %>
+			</ul>
+		</nav>
+	</footer>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+/* Graceful image replacement */
+
+  .ir { position: relative; display: block; overflow: hidden; }
+  .ir a { cursor: pointer; }
+  .ir span { 
+    width: 100%; height: 100%;
+    position: absolute; top: 0; left: 0;
+    background-repeat: no-repeat;
+    background-position: top left;
+  }
+
+	.print { display: none; margin-bottom: 50px; margin-top: 30px; }
+	
+	.cta { margin: 0; padding: 0 0 10px; }
+	.cta a {
+		padding: 5px 20px 4px;
+		text-align: center;
+		display: inline-block;
+		color: #ffffff;
+		background: #ea5528;
+		border-bottom: 5px solid #c23a1a;
+		font-size: 13px;
+		font-weight: normal;
+	}
+	
+	.cta a:hover,
+	.cta a:focus,
+	.cta a:active {
+		border-bottom: 5px solid rgb(247,246,241);
+		text-decoration: none;
+	}
+	
+	
+	.full_panel p.intro {
+		font-style: italic;
+		font-size: 14px;
+		float: left;
+		margin: 0;
+		line-height: 35px;
+	}
+	
+	.full_panel p.cta {
+		float: right;
+		margin: 0 10px 0 0;
+		padding: 0;
+	}

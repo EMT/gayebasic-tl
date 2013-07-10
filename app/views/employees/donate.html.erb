@@ -1,0 +1,22 @@
+<h1>Donate from your CAF account</h1>
+<p>Your CAF account balance: &pound;203</p>
+
+<form action="<%= employee_path(@_employer, @_employee)%>">
+	<fieldset>
+		<div class="input string">
+			<label>Donation amount</label>
+			<input type="text" class="input string" />
+		</div>
+		<h2>Donate to:</h2>
+		<div class="input boolean">
+			<input name="c" type="checkbox"/><label>My nominated charity NSPCC</label>
+		</div>
+		<div class="input string">
+			<label>A different charity:</label>
+			<input type="text" class="input string" />
+		</div>
+	</fieldset>
+	<fieldset class="actions">
+			<input name="commit" type="submit" value="Donate">	
+	</fieldset>
+</form>
